@@ -1,0 +1,1 @@
+$(document).ready(function(){function a(){$(".wdt").css("height",$(window).height())}$(window).on("load",function(){var a=$("#page"),b=$("#loader");b.delay(1e3).fadeOut("slow"),a.delay(1e3).fadeOut("slow")}),a(),$(window).resize(function(){a()})});
