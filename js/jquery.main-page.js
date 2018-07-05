@@ -1,1 +1,426 @@
-!function(a){var b={sectionContainer:"section",easing:"ease",animationTime:1e3,pagination:!0,updateURL:!1,keyboard:!0,beforeMove:null,afterMove:null,loop:!0,responsiveFallback:!1,direction:"vertical"};a.fn.swipeEvents=function(){return this.each(function(){function e(a){var e=a.originalEvent.touches;e&&e.length&&(b=e[0].pageX,c=e[0].pageY,d.bind("touchmove",f))}function f(a){var e=a.originalEvent.touches;if(e&&e.length){var g=b-e[0].pageX,h=c-e[0].pageY;g>=50&&d.trigger("swipeLeft"),g<=-50&&d.trigger("swipeRight"),h>=50&&d.trigger("swipeUp"),h<=-50&&d.trigger("swipeDown"),(Math.abs(g)>=50||Math.abs(h)>=50)&&d.unbind("touchmove",f)}}var b,c,d=a(this);d.bind("touchstart",e)})},a.fn.onepage_scroll=function(c){function g(){var b=!1,c=typeof d.responsiveFallback;"number"==c&&(b=a(window).width()<d.responsiveFallback),"boolean"==c&&(b=d.responsiveFallback),"function"==c&&(valFunction=d.responsiveFallback(),b=valFunction,typeOFv=typeof b,"number"==typeOFv&&(b=a(window).width()<valFunction)),b?(a("body").addClass("disabled-onepage-scroll"),a(document).unbind("mousewheel DOMMouseScroll MozMousePixelScroll"),e.swipeEvents().unbind("swipeDown swipeUp")):(a("body").hasClass("disabled-onepage-scroll")&&(a("body").removeClass("disabled-onepage-scroll"),a("html, body, .wrapper").animate({scrollTop:0},"fast")),e.swipeEvents().bind("swipeDown",function(b){a("body").hasClass("disabled-onepage-scroll")||b.preventDefault(),e.moveUp()}).bind("swipeUp",function(b){a("body").hasClass("disabled-onepage-scroll")||b.preventDefault(),e.moveDown()}),a(document).bind("mousewheel DOMMouseScroll MozMousePixelScroll",function(a){a.preventDefault();var b=a.originalEvent.wheelDelta||-a.originalEvent.detail;h(a,b)}))}function h(a,b){deltaOfInterest=b;var c=(new Date).getTime();return c-lastAnimation<quietPeriod+d.animationTime?void a.preventDefault():(deltaOfInterest<0?e.moveDown():e.moveUp(),void(lastAnimation=c))}var d=a.extend({},b,c),e=a(this),f=a(d.sectionContainer);if(total=f.length,status="off",topPos=0,leftPos=0,lastAnimation=0,quietPeriod=500,paginationList="",a.fn.transformPage=function(b,c,d){if("function"==typeof b.beforeMove&&b.beforeMove(d),a("html").hasClass("ie8"))if("horizontal"==b.direction){var f=e.width()/100*c;a(this).animate({left:f+"px"},b.animationTime)}else{var f=e.height()/100*c;a(this).animate({top:f+"px"},b.animationTime)}else a(this).css({"-webkit-transform":"horizontal"==b.direction?"translate3d("+c+"%, 0, 0)":"translate3d(0, "+c+"%, 0)","-webkit-transition":"all "+b.animationTime+"ms "+b.easing,"-moz-transform":"horizontal"==b.direction?"translate3d("+c+"%, 0, 0)":"translate3d(0, "+c+"%, 0)","-moz-transition":"all "+b.animationTime+"ms "+b.easing,"-ms-transform":"horizontal"==b.direction?"translate3d("+c+"%, 0, 0)":"translate3d(0, "+c+"%, 0)","-ms-transition":"all "+b.animationTime+"ms "+b.easing,transform:"horizontal"==b.direction?"translate3d("+c+"%, 0, 0)":"translate3d(0, "+c+"%, 0)",transition:"all "+b.animationTime+"ms "+b.easing});a(this).one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",function(){"function"==typeof b.afterMove&&b.afterMove(d)})},a.fn.moveDown=function(){var b=a(this);if(index=a(d.sectionContainer+".active").data("index"),current=a(d.sectionContainer+"[data-index='"+index+"']"),next=a(d.sectionContainer+"[data-index='"+(index+1)+"']"),next.length<1){if(1!=d.loop)return;pos=0,next=a(d.sectionContainer+"[data-index='1']")}else pos=100*index*-1;if("function"==typeof d.beforeMove&&d.beforeMove(next.data("index")),current.removeClass("active"),next.addClass("active"),1==d.pagination&&(a(".onepage-pagination li a[data-index='"+index+"']").removeClass("active"),a(".onepage-pagination li a[data-index='"+next.data("index")+"']").addClass("active")),a("body")[0].className=a("body")[0].className.replace(/\bviewing-page-\d.*?\b/g,""),a("body").addClass("viewing-page-"+next.data("index")),history.replaceState&&1==d.updateURL){var c=window.location.href.substr(0,window.location.href.indexOf("#"))+"#"+(index+1);history.pushState({},document.title,c)}b.transformPage(d,pos,next.data("index"))},a.fn.moveUp=function(){var b=a(this);if(index=a(d.sectionContainer+".active").data("index"),current=a(d.sectionContainer+"[data-index='"+index+"']"),next=a(d.sectionContainer+"[data-index='"+(index-1)+"']"),next.length<1){if(1!=d.loop)return;pos=100*(total-1)*-1,next=a(d.sectionContainer+"[data-index='"+total+"']")}else pos=100*(next.data("index")-1)*-1;if("function"==typeof d.beforeMove&&d.beforeMove(next.data("index")),current.removeClass("active"),next.addClass("active"),1==d.pagination&&(a(".onepage-pagination li a[data-index='"+index+"']").removeClass("active"),a(".onepage-pagination li a[data-index='"+next.data("index")+"']").addClass("active")),a("body")[0].className=a("body")[0].className.replace(/\bviewing-page-\d.*?\b/g,""),a("body").addClass("viewing-page-"+next.data("index")),history.replaceState&&1==d.updateURL){var c=window.location.href.substr(0,window.location.href.indexOf("#"))+"#"+(index-1);history.pushState({},document.title,c)}b.transformPage(d,pos,next.data("index"))},a.fn.moveTo=function(b){if(current=a(d.sectionContainer+".active"),next=a(d.sectionContainer+"[data-index='"+b+"']"),next.length>0){if("function"==typeof d.beforeMove&&d.beforeMove(next.data("index")),current.removeClass("active"),next.addClass("active"),a(".onepage-pagination li a.active").removeClass("active"),a(".onepage-pagination li a[data-index='"+b+"']").addClass("active"),a("body")[0].className=a("body")[0].className.replace(/\bviewing-page-\d.*?\b/g,""),a("body").addClass("viewing-page-"+next.data("index")),pos=100*(b-1)*-1,history.replaceState&&1==d.updateURL){var c=window.location.href.substr(0,window.location.href.indexOf("#"))+"#"+(b-1);history.pushState({},document.title,c)}e.transformPage(d,pos,b)}},e.addClass("onepage-wrapper").css("position","relative"),a.each(f,function(b){a(this).css({position:"absolute",top:topPos+"%"}).addClass("section").attr("data-index",b+1),a(this).css({position:"absolute",left:"horizontal"==d.direction?leftPos+"%":0,top:"vertical"==d.direction||"horizontal"!=d.direction?topPos+"%":0}),"horizontal"==d.direction?leftPos+=100:topPos+=100,1==d.pagination&&(paginationList+="<li><a data-index='"+(b+1)+"' href='#"+(b+1)+"'></a></li>")}),e.swipeEvents().bind("swipeDown",function(b){a("body").hasClass("disabled-onepage-scroll")||b.preventDefault(),e.moveUp()}).bind("swipeUp",function(b){a("body").hasClass("disabled-onepage-scroll")||b.preventDefault(),e.moveDown()}),1==d.pagination&&(a("ul.onepage-pagination").length<1&&a("<ul class='onepage-pagination'></ul>").prependTo("body"),"horizontal"==d.direction?(posLeft=e.find(".onepage-pagination").width()/2*-1,e.find(".onepage-pagination").css("margin-left",posLeft)):(posTop=e.find(".onepage-pagination").height()/2*-1,e.find(".onepage-pagination").css("margin-top",posTop)),a("ul.onepage-pagination").html(paginationList)),""!=window.location.hash&&"#1"!=window.location.hash)if(init_index=window.location.hash.replace("#",""),parseInt(init_index)<=total&&parseInt(init_index)>0){if(a(d.sectionContainer+"[data-index='"+init_index+"']").addClass("active"),a("body").addClass("viewing-page-"+init_index),1==d.pagination&&a(".onepage-pagination li a[data-index='"+init_index+"']").addClass("active"),next=a(d.sectionContainer+"[data-index='"+init_index+"']"),next&&(next.addClass("active"),1==d.pagination&&a(".onepage-pagination li a[data-index='"+init_index+"']").addClass("active"),a("body")[0].className=a("body")[0].className.replace(/\bviewing-page-\d.*?\b/g,""),a("body").addClass("viewing-page-"+next.data("index")),history.replaceState&&1==d.updateURL)){var i=window.location.href.substr(0,window.location.href.indexOf("#"))+"#"+init_index;history.pushState({},document.title,i)}pos=100*(init_index-1)*-1,e.transformPage(d,pos,init_index)}else a(d.sectionContainer+"[data-index='1']").addClass("active"),a("body").addClass("viewing-page-1"),1==d.pagination&&a(".onepage-pagination li a[data-index='1']").addClass("active");else a(d.sectionContainer+"[data-index='1']").addClass("active"),a("body").addClass("viewing-page-1"),1==d.pagination&&a(".onepage-pagination li a[data-index='1']").addClass("active");return 1==d.pagination&&a(".onepage-pagination li a").click(function(){var b=a(this).data("index");e.moveTo(b)}),a(document).bind("mousewheel DOMMouseScroll MozMousePixelScroll",function(b){b.preventDefault();var c=b.originalEvent.wheelDelta||-b.originalEvent.detail;a("body").hasClass("disabled-onepage-scroll")||h(b,c)}),0!=d.responsiveFallback&&(a(window).resize(function(){g()}),g()),1==d.keyboard&&a(document).keydown(function(b){var c=b.target.tagName.toLowerCase();if(!a("body").hasClass("disabled-onepage-scroll"))switch(b.which){case 38:"input"!=c&&"textarea"!=c&&e.moveUp();break;case 40:"input"!=c&&"textarea"!=c&&e.moveDown();break;case 32:"input"!=c&&"textarea"!=c&&e.moveDown();break;case 33:"input"!=c&&"textarea"!=c&&e.moveUp();break;case 34:"input"!=c&&"textarea"!=c&&e.moveDown();break;case 36:e.moveTo(1);break;case 35:e.moveTo(total);break;default:return}}),!1}}(window.jQuery);
+/* ===========================================================
+ * jquery-onepage-scroll.js v1.3.1
+ * ===========================================================
+ * Copyright 2013 Pete Rojwongsuriya.
+ * http://www.thepetedesign.com
+ *
+ * Create an Apple-like website that let user scroll
+ * one page at a time
+ *
+ * Credit: Eike Send for the awesome swipe event
+ * https://github.com/peachananr/onepage-scroll
+ *
+ * License: GPL v3
+ *
+ * ========================================================== */
+
+!function($){
+
+  var defaults = {
+    sectionContainer: "section",
+    easing: "ease",
+    animationTime: 1000,
+    pagination: true,
+    updateURL: false,
+    keyboard: true,
+    beforeMove: null,
+    afterMove: null,
+    loop: true,
+    responsiveFallback: false,
+    direction : 'vertical'
+	};
+
+	/*------------------------------------------------*/
+	/*  Credit: Eike Send for the awesome swipe event */
+	/*------------------------------------------------*/
+
+	$.fn.swipeEvents = function() {
+      return this.each(function() {
+
+        var startX,
+            startY,
+            $this = $(this);
+
+        $this.bind('touchstart', touchstart);
+
+        function touchstart(event) {
+          var touches = event.originalEvent.touches;
+          if (touches && touches.length) {
+            startX = touches[0].pageX;
+            startY = touches[0].pageY;
+            $this.bind('touchmove', touchmove);
+          }
+        }
+
+        function touchmove(event) {
+          var touches = event.originalEvent.touches;
+          if (touches && touches.length) {
+            var deltaX = startX - touches[0].pageX;
+            var deltaY = startY - touches[0].pageY;
+
+            if (deltaX >= 50) {
+              $this.trigger("swipeLeft");
+            }
+            if (deltaX <= -50) {
+              $this.trigger("swipeRight");
+            }
+            if (deltaY >= 50) {
+              $this.trigger("swipeUp");
+            }
+            if (deltaY <= -50) {
+              $this.trigger("swipeDown");
+            }
+            if (Math.abs(deltaX) >= 50 || Math.abs(deltaY) >= 50) {
+              $this.unbind('touchmove', touchmove);
+            }
+          }
+        }
+
+      });
+    };
+
+
+  $.fn.onepage_scroll = function(options){
+    var settings = $.extend({}, defaults, options),
+        el = $(this),
+        sections = $(settings.sectionContainer)
+        total = sections.length,
+        status = "off",
+        topPos = 0,
+        leftPos = 0,
+        lastAnimation = 0,
+        quietPeriod = 500,
+        paginationList = "";
+
+    $.fn.transformPage = function(settings, pos, index) {
+      if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
+
+      // Just a simple edit that makes use of modernizr to detect an IE8 browser and changes the transform method into
+    	// an top animate so IE8 users can also use this script.
+    	if($('html').hasClass('ie8')){
+        if (settings.direction == 'horizontal') {
+          var toppos = (el.width()/100)*pos;
+          $(this).animate({left: toppos+'px'},settings.animationTime);
+        } else {
+          var toppos = (el.height()/100)*pos;
+          $(this).animate({top: toppos+'px'},settings.animationTime);
+        }
+    	} else{
+    	  $(this).css({
+    	    "-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+         "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
+         "-moz-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+         "-moz-transition": "all " + settings.animationTime + "ms " + settings.easing,
+         "-ms-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+         "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
+         "transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+         "transition": "all " + settings.animationTime + "ms " + settings.easing
+    	  });
+    	}
+      $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+        if (typeof settings.afterMove == 'function') settings.afterMove(index);
+      });
+    }
+
+    $.fn.moveDown = function() {
+      var el = $(this)
+      index = $(settings.sectionContainer +".active").data("index");
+      current = $(settings.sectionContainer + "[data-index='" + index + "']");
+      next = $(settings.sectionContainer + "[data-index='" + (index + 1) + "']");
+      if(next.length < 1) {
+        if (settings.loop == true) {
+          pos = 0;
+          next = $(settings.sectionContainer + "[data-index='1']");
+        } else {
+          return
+        }
+
+      }else {
+        pos = (index * 100) * -1;
+      }
+      if (typeof settings.beforeMove == 'function') settings.beforeMove( next.data("index"));
+      current.removeClass("active")
+      next.addClass("active");
+      if(settings.pagination == true) {
+        $(".onepage-pagination li a" + "[data-index='" + index + "']").removeClass("active");
+        $(".onepage-pagination li a" + "[data-index='" + next.data("index") + "']").addClass("active");
+      }
+
+      $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+      $("body").addClass("viewing-page-"+next.data("index"))
+
+      if (history.replaceState && settings.updateURL == true) {
+        var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (index + 1);
+        history.pushState( {}, document.title, href );
+      }
+      el.transformPage(settings, pos, next.data("index"));
+    }
+
+    $.fn.moveUp = function() {
+      var el = $(this)
+      index = $(settings.sectionContainer +".active").data("index");
+      current = $(settings.sectionContainer + "[data-index='" + index + "']");
+      next = $(settings.sectionContainer + "[data-index='" + (index - 1) + "']");
+
+      if(next.length < 1) {
+        if (settings.loop == true) {
+          pos = ((total - 1) * 100) * -1;
+          next = $(settings.sectionContainer + "[data-index='"+total+"']");
+        }
+        else {
+          return
+        }
+      }else {
+        pos = ((next.data("index") - 1) * 100) * -1;
+      }
+      if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
+      current.removeClass("active")
+      next.addClass("active")
+      if(settings.pagination == true) {
+        $(".onepage-pagination li a" + "[data-index='" + index + "']").removeClass("active");
+        $(".onepage-pagination li a" + "[data-index='" + next.data("index") + "']").addClass("active");
+      }
+      $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+      $("body").addClass("viewing-page-"+next.data("index"))
+
+      if (history.replaceState && settings.updateURL == true) {
+        var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (index - 1);
+        history.pushState( {}, document.title, href );
+      }
+      el.transformPage(settings, pos, next.data("index"));
+    }
+
+    $.fn.moveTo = function(page_index) {
+      current = $(settings.sectionContainer + ".active")
+      next = $(settings.sectionContainer + "[data-index='" + (page_index) + "']");
+      if(next.length > 0) {
+        if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
+        current.removeClass("active")
+        next.addClass("active")
+        $(".onepage-pagination li a" + ".active").removeClass("active");
+        $(".onepage-pagination li a" + "[data-index='" + (page_index) + "']").addClass("active");
+        $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+        $("body").addClass("viewing-page-"+next.data("index"))
+
+        pos = ((page_index - 1) * 100) * -1;
+
+        if (history.replaceState && settings.updateURL == true) {
+            var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (page_index - 1);
+            history.pushState( {}, document.title, href );
+        }
+        el.transformPage(settings, pos, page_index);
+      }
+    }
+
+    function responsive() {
+      //start modification
+      var valForTest = false;
+      var typeOfRF = typeof settings.responsiveFallback
+
+      if(typeOfRF == "number"){
+      	valForTest = $(window).width() < settings.responsiveFallback;
+      }
+      if(typeOfRF == "boolean"){
+      	valForTest = settings.responsiveFallback;
+      }
+      if(typeOfRF == "function"){
+      	valFunction = settings.responsiveFallback();
+      	valForTest = valFunction;
+      	typeOFv = typeof valForTest;
+      	if(typeOFv == "number"){
+      		valForTest = $(window).width() < valFunction;
+      	}
+      }
+
+      //end modification
+      if (valForTest) {
+        $("body").addClass("disabled-onepage-scroll");
+        $(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
+        el.swipeEvents().unbind("swipeDown swipeUp");
+      } else {
+        if($("body").hasClass("disabled-onepage-scroll")) {
+          $("body").removeClass("disabled-onepage-scroll");
+          $("html, body, .wrapper").animate({ scrollTop: 0 }, "fast");
+        }
+
+
+        el.swipeEvents().bind("swipeDown",  function(event){
+          if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+          el.moveUp();
+        }).bind("swipeUp", function(event){
+          if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+          el.moveDown();
+        });
+
+        $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
+          event.preventDefault();
+          var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+          init_scroll(event, delta);
+        });
+      }
+    }
+
+
+    function init_scroll(event, delta) {
+        deltaOfInterest = delta;
+        var timeNow = new Date().getTime();
+        // Cancel scroll if currently animating or within quiet period
+        if(timeNow - lastAnimation < quietPeriod + settings.animationTime) {
+            event.preventDefault();
+            return;
+        }
+
+        if (deltaOfInterest < 0) {
+          el.moveDown()
+        } else {
+          el.moveUp()
+        }
+        lastAnimation = timeNow;
+    }
+
+    // Prepare everything before binding wheel scroll
+
+    el.addClass("onepage-wrapper").css("position","relative");
+    $.each( sections, function(i) {
+      $(this).css({
+        position: "absolute",
+        top: topPos + "%"
+      }).addClass("section").attr("data-index", i+1);
+
+
+      $(this).css({
+        position: "absolute",
+        left: ( settings.direction == 'horizontal' )
+          ? leftPos + "%"
+          : 0,
+        top: ( settings.direction == 'vertical' || settings.direction != 'horizontal' )
+          ? topPos + "%"
+          : 0
+      });
+
+      if (settings.direction == 'horizontal')
+        leftPos = leftPos + 100;
+      else
+        topPos = topPos + 100;
+
+
+      if(settings.pagination == true) {
+        paginationList += "<li><a data-index='"+(i+1)+"' href='#" + (i+1) + "'></a></li>"
+      }
+    });
+
+    el.swipeEvents().bind("swipeDown",  function(event){
+      if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+      el.moveUp();
+    }).bind("swipeUp", function(event){
+      if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+      el.moveDown();
+    });
+
+    // Create Pagination and Display Them
+    if (settings.pagination == true) {
+      if ($('ul.onepage-pagination').length < 1) $("<ul class='onepage-pagination'></ul>").prependTo("body");
+
+      if( settings.direction == 'horizontal' ) {
+        posLeft = (el.find(".onepage-pagination").width() / 2) * -1;
+        el.find(".onepage-pagination").css("margin-left", posLeft);
+      } else {
+        posTop = (el.find(".onepage-pagination").height() / 2) * -1;
+        el.find(".onepage-pagination").css("margin-top", posTop);
+      }
+      $('ul.onepage-pagination').html(paginationList);
+    }
+
+    if(window.location.hash != "" && window.location.hash != "#1") {
+      init_index =  window.location.hash.replace("#", "")
+
+      if (parseInt(init_index) <= total && parseInt(init_index) > 0) {
+        $(settings.sectionContainer + "[data-index='" + init_index + "']").addClass("active")
+        $("body").addClass("viewing-page-"+ init_index)
+        if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='" + init_index + "']").addClass("active");
+
+        next = $(settings.sectionContainer + "[data-index='" + (init_index) + "']");
+        if(next) {
+          next.addClass("active")
+          if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='" + (init_index) + "']").addClass("active");
+          $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
+          $("body").addClass("viewing-page-"+next.data("index"))
+          if (history.replaceState && settings.updateURL == true) {
+            var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (init_index);
+            history.pushState( {}, document.title, href );
+          }
+        }
+        pos = ((init_index - 1) * 100) * -1;
+        el.transformPage(settings, pos, init_index);
+      } else {
+        $(settings.sectionContainer + "[data-index='1']").addClass("active")
+        $("body").addClass("viewing-page-1")
+        if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='1']").addClass("active");
+      }
+    }else{
+      $(settings.sectionContainer + "[data-index='1']").addClass("active")
+      $("body").addClass("viewing-page-1")
+      if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='1']").addClass("active");
+    }
+
+    if(settings.pagination == true)  {
+      $(".onepage-pagination li a").click(function (){
+        var page_index = $(this).data("index");
+        el.moveTo(page_index);
+      });
+    }
+
+
+    $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
+      event.preventDefault();
+      var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+      if(!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
+    });
+
+
+    if(settings.responsiveFallback != false) {
+      $(window).resize(function() {
+        responsive();
+      });
+
+      responsive();
+    }
+
+    if(settings.keyboard == true) {
+      $(document).keydown(function(e) {
+        var tag = e.target.tagName.toLowerCase();
+
+        if (!$("body").hasClass("disabled-onepage-scroll")) {
+          switch(e.which) {
+            case 38:
+              if (tag != 'input' && tag != 'textarea') el.moveUp()
+            break;
+            case 40:
+              if (tag != 'input' && tag != 'textarea') el.moveDown()
+            break;
+            case 32: //spacebar
+              if (tag != 'input' && tag != 'textarea') el.moveDown()
+            break;
+            case 33: //pageg up
+              if (tag != 'input' && tag != 'textarea') el.moveUp()
+            break;
+            case 34: //page dwn
+              if (tag != 'input' && tag != 'textarea') el.moveDown()
+            break;
+            case 36: //home
+              el.moveTo(1);
+            break;
+            case 35: //end
+              el.moveTo(total);
+            break;
+            default: return;
+          }
+        }
+
+      });
+    }
+    return false;
+  }
+
+
+}(window.jQuery);
