@@ -225,8 +225,8 @@ header {
   justify-content: center; }
 
 .mainload .containercircles {
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   background: transparent;
   -webkit-box-flex: 1;
   -moz-flex: 1 1 1;
@@ -245,8 +245,8 @@ header {
 .mainload .containercircles .circleOne {
   background: transparent;
   border: 0.1rem solid #FC0853;
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   -moz-border-radius: 50%;
   border-radius: 50%;
   -webkit-animation: animeOne 10s linear infinite;
@@ -257,8 +257,8 @@ header {
 .mainload .containercircles .circleTwo {
   background: transparent;
   border: 0.1rem solid #08FDD8;
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   -moz-border-radius: 50%;
   border-radius: 50%;
   -webkit-animation: animeTwo 10s linear infinite;
@@ -269,8 +269,8 @@ header {
 .mainload .containercircles .circleThree {
   background: transparent;
   border: 0.1rem solid #44F2FF;
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   -moz-border-radius: 50%;
   border-radius: 50%;
   -webkit-animation: animeOne 7s linear infinite;
@@ -281,8 +281,8 @@ header {
 .mainload .containercircles .circleFour {
   background: transparent;
   border: 0.1rem solid #F8A800;
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   -moz-border-radius: 50%;
   border-radius: 50%;
   -webkit-animation: animeTwo 7s linear infinite;
@@ -293,8 +293,8 @@ header {
 .mainload .containercircles .circleFive {
   background: transparent;
   border: 0.1rem solid #F923DB;
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   -moz-border-radius: 50%;
   border-radius: 50%;
   -webkit-animation: animeOne 4s linear infinite;
@@ -305,8 +305,8 @@ header {
 .mainload .containercircles .circleSix {
   background: transparent;
   border: 0.1rem solid #fff;
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   -moz-border-radius: 50%;
   border-radius: 50%;
   -webkit-animation: animeTwo 2s linear infinite;
