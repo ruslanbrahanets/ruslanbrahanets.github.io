@@ -1130,9 +1130,9 @@ body {
 	-moz-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	-webkit-justify-content: space-around;
-	-ms-flex-pack: distribute;
-	justify-content: space-around;
+	-webkit-justify-content: flex-start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
 	padding: 0 200px; }
 	.BRG-page-services-text {
 		width: 860px; }
