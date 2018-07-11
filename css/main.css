@@ -911,15 +911,6 @@ body {
         -o-transition: all .3s ease-in;
         -moz-transition: all .3s ease-in;
 				transition: all .3s ease-in; }
-	.BRG-top-salute-logo {
-		position: absolute;
-    top: 125px;
-    left: 100px;
-    height: 50px;
-    width: auto;
-		cursor: pointer;}
-		.BRG-top-salute-logo img {
-			height: 100px;}
 
 .BRG-page-about, .BRG-page-skills, .BRG-page-portfolio, .BRG-page-contacts {
   width: 100%;
