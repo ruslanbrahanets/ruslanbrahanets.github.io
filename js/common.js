@@ -123,7 +123,12 @@ $(document).ready(function () {
         $("[href$='#4']").click();
         oneclosemenu();
     });
-    $('.contactsbtn').click(function(e)
+    $('.servicesbtn').click(function(e)
+    {
+        $("[href$='#5']").click();
+        oneclosemenu();
+		});
+		$('.contactsbtn').click(function(e)
     {
         $("[href$='#5']").click();
         oneclosemenu();
