@@ -91,7 +91,14 @@ header .menu_btn {
   header .menu_btn #bgcolor {
     top: 155px;
     right: 105px;
-    background: #44F2FF; }
+		background: #44F2FF; }
+	header .menu_btn .i-menu {
+		font-size: 16px;
+  	position: relative;
+  	font-family: 'RalewayBold';
+  	color: white;
+  	right: 60px;
+  	top: 30%;}	
 header .menu_btn_close {
   opacity: 1;
   position: fixed;
