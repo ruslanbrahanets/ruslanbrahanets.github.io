@@ -130,7 +130,7 @@ $(document).ready(function () {
 		});
 		$('.contactsbtn').click(function(e)
     {
-        $("[href$='#5']").click();
+        $("[href$='#6']").click();
         oneclosemenu();
     });
     $('.cases-open').click(function(e)
