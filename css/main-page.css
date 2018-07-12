@@ -58,10 +58,16 @@ body, .onepage-wrapper, html {
   background: rgba(255,255,255,0.85);
   border-radius: 10px;
   -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+	-moz-border-radius: 10px;
+	transition: all .2s ease-in-out;
+}
+.onepage-pagination li a:hover:before{
+	transform: scale(2);
+	transition: all .2s ease-in-out;
 }
 
-.onepage-pagination li a.active:before{
+.onepage-pagination li a.active:before, 
+.onepage-pagination li a.active:hover:before{
 	width: 10px;
 	height: 10px;
 	background: aqua;
