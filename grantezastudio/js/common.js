@@ -28,14 +28,6 @@ $(document).ready(function () {
     });
     
     
-    
-    $(window).on('load', function () {
-      var $preloader = $('#page'),
-            $svg_anm   = $('#loader');
-        $svg_anm.delay(5000).fadeOut('slow');
-        $preloader.delay(5000).fadeOut('slow');
-  });
-    
     function checkWidth() {
         windowsize = $(window).width();
     }
