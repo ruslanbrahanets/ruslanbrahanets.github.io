@@ -1,0 +1,144 @@
+.wi-fb {
+    font-size: 14px;
+    color: #000;
+}
+
+.wi-fb .wi-fb-btn,
+.wi-fb .wi-fb-line {
+    text-align: left;
+}
+
+.wi-fb .wi-fb-line {
+    margin: 0 0 1em;
+    padding: 0;
+}
+
+.wi-fb {
+    font-size: 14px;
+    color: #000;
+}
+
+.wi-fb .wi-fb-btn button,
+.wi-fb .wi-fb-line input,
+.wi-fb .wi-fb-line textarea,
+footer p,
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-moz-placeholder,
+:-ms-input-placeholder {
+    font-family: Ubuntu; 
+}
+
+.wi-fb .wi-fb-line input,
+.wi-fb .wi-fb-line select,
+.wi-fb .wi-fb-line textarea {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    height: 40px;
+    margin: 0;
+    padding: 4px 10px;
+    border: 1px solid silver;
+    border-radius: 0;
+    background: #fff;
+    font-size: 1em;
+    outline: 0;
+}
+
+input {
+    line-height: normal;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.wi-fb .wi-fb-line input,
+.wi-fb .wi-fb-line textarea {
+    max-width: 100%;
+    background: 0 0;
+    border-color: transparent;
+    color: #3d3d3d;
+    font-size: 16px;
+    -webkit-transition: border-color .5s;
+    transition: border-color .5s;
+}
+
+.wi-fb .wi-fb-btn {
+    margin-top: 35px;
+    padding: 0;
+    font-family: "RalewayBold";
+    width: 100%;
+    font-size: 24px;
+}
+
+.wi-fb .wi-fb-btn button {
+    background: #64C100!important;
+    border-radius: 5px;
+    text-transform: uppercase!important;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 45px 0;
+    border: none;
+    text-transform: none;
+    color: #fff;
+    cursor: pointer;
+    outline: 0;
+    -webkit-transition: background-color .25s;
+    transition: background-color .25s;
+    max-width: 100%%;
+}
+
+.wi-fb .wi-fb-line input {
+    padding-left: 0;
+    border-bottom-color: #2e2e2e;
+}
+
+.wi-fb .wi-fb-line textarea {
+    border-color: #2e2e2e;
+    border-radius: 5px;
+    margin-top: 35px;
+    resize: none;
+    height: 115px;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-moz-placeholder,
+:-ms-input-placeholder {
+    color: #686868;
+    font-family: Ubuntu;
+}
+
+.uploadButton {
+    display: block;
+    width: 100%;
+    border: 1px solid #64c100;
+    padding: 20px;
+    color: #686868;
+    font-size: 18px;
+    font-family: RalewayBold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-transition: 0.3s linear;
+    transition: 0.3s linear;
+}
+
+.uploadButton:hover {
+    background: #64C100;
+    color: #fff;
+    -webkit-transition: 0.3s linear;
+    transition: 0.3s linear;
+}
