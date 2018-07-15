@@ -114,13 +114,19 @@ header .menu_btn_close {
     right: 105px;
     background: #ff007f; }
 header .menu_bg {
+	background: -moz-linear-gradient(315deg, #150077 0%, #3b0079 20%, #6d0a99 40%, #af00b0 60%, #ff00fe 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #150077), color-stop(20%, #3b0079), color-stop(40%, #6d0a99), color-stop(60%, #af00b0), color-stop(100%, #ff00fe));
+  background: -webkit-linear-gradient(315deg, #150077 0%, #3b0079 20%, #6d0a99 40%, #af00b0 60%, #ff00fe 100%);
+  background: -o-linear-gradient(315deg, #150077 0%, #3b0079 20%, #6d0a99 40%, #af00b0 60%, #ff00fe 100%);
+  background: -moz-linear-gradient(315deg, #150077 0%, #3b0079 20%, #6d0a99 40%, #af00b0 60%, #ff00fe 100%);
+  background: linear-gradient(135deg, #150077 0%, #3b0079 20%, #6d0a99 40%, #af00b0 60%, #ff00fe 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#150077', endColorstr='#FF00FE',GradientType=1 );
   display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: fixed;
   z-indeX: 2000;
-  background: #6d0a99;
   -moz-border-radius: 1000px;
   border-radius: 1000px;
   top: 0;
