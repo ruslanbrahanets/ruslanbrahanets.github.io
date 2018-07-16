@@ -170,6 +170,10 @@
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
+	  .BRG-page-services-text.lefs {
+		 	width: 100%;}
+		.BRG-page-howitworks-text.rigs {
+			width: 100%;}
     .BRG-top-salute-ntmu {
         padding-left: 150px;
     }

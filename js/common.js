@@ -128,9 +128,14 @@ $(document).ready(function () {
         $("[href$='#5']").click();
         oneclosemenu();
 		});
-		$('.contactsbtn').click(function(e)
+		$('#processbtn').click(function(e)
     {
         $("[href$='#6']").click();
+        oneclosemenu();
+		});
+		$('.contactsbtn').click(function(e)
+    {
+        $("[href$='#7']").click();
         oneclosemenu();
     });
     $('.cases-open').click(function(e)
