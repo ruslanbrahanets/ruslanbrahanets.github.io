@@ -848,7 +848,9 @@ body {
     .BRG-page h1 span, .BRG-location h1 span, .BRG-minipage-top h1 span, .BRG-minipage-middle h1 span, .BRG-minipage-contacts h1 span {
       color: #44F2FF; }
   .BRG-page p, .BRG-location p, .BRG-minipage-top p, .BRG-minipage-middle p, .BRG-minipage-contacts p {
-    font-family: 'RalewayLight'; }
+		font-family: 'RalewayLightFixed'; }
+	.bbbbb {
+			font-family: 'RalewaySemiBoldFixed'!important; }
 
 .BRG-page h1, .BRG-location h1 {
   font-size: 50px;
@@ -1668,13 +1670,13 @@ body {
 .BRG-page-skills-icons-line-n svg:hover .bt{fill:#3BB1DC;}
 .BRG-page-skills-icons-line-n svg:hover .marvel{fill:#1991EB;}
 .BRG-page-contacts {
-	background: -moz-linear-gradient(270deg, #af00b0 0%, #ff00fe 100%); /* ff3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #af00b0), color-stop(100%, #ff00fe)); /* safari4+,chrome */
-	background: -webkit-linear-gradient(270deg, #af00b0 0%, #ff00fe 100%); /* safari5.1+,chrome10+ */
-	background: -o-linear-gradient(270deg, #af00b0 0%, #ff00fe 100%); /* opera 11.10+ */
-	background: -ms-linear-gradient(270deg, #af00b0 0%, #ff00fe 100%); /* ie10+ */
-	background: linear-gradient(180deg, #af00b0 0%, #ff00fe 100%); /* w3c */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#af00b0', endColorstr='#ff00fe',GradientType=0 ); /* ie6-9 */
+	background: -moz-linear-gradient(270deg, #af00b0 0%, #d25d99 100%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #af00b0), color-stop(100%, #d25d99)); /* safari4+,chrome */
+	background: -webkit-linear-gradient(270deg, #af00b0 0%, #d25d99 100%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(270deg, #af00b0 0%, #d25d99 100%); /* opera 11.10+ */
+	background: -ms-linear-gradient(270deg, #af00b0 0%, #d25d99 100%); /* ie10+ */
+	background: linear-gradient(180deg, #af00b0 0%, #d25d99 100%); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#af00b0', endColorstr='#d25d99',GradientType=0 ); /* ie6-9 */
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;

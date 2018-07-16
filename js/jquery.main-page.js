@@ -18,8 +18,8 @@
 
   var defaults = {
     sectionContainer: "section",
-    easing: "ease-in-out",
-    animationTime: 500,
+    easing: "ease-out",
+    animationTime: 1000,
     pagination: true,
     updateURL: false,
     keyboard: true,
