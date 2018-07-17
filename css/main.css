@@ -984,7 +984,7 @@ body {
       left: 0;
       width: 100%;
       height: 100%;
-      background: #000;
+      background: linear-gradient(135deg, #150077 0%, #3b0079 20%, #6d0a99 40%, #af00b0 60%, #ff00fe 100%);
       -webkit-transition: .3s ease-in-out;
       -o-transition: .3s ease-in-out;
       -moz-transition: .3s ease-in-out;
