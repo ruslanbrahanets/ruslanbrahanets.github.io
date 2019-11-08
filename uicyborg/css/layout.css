@@ -148,6 +148,13 @@
 	position: relative;
 }
 
+.header .top-menu ul .topli {
+	margin-left: 40px;
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+
 .header .top-menu ul li a {
 	position: relative;
 	overflow: hidden;
@@ -171,24 +178,6 @@
 
 .header .top-menu ul li:hover > a, .header .top-menu ul li.current-menu-item > a {
 	opacity: 1;
-}
-
-.header .top-menu ul li.menu-item-has-children > a .mask-lnk:after {
-	content: "\f078";
-	margin-left: 5px;
-	position: relative;
-	top: 0;
-	display: inline-block;
-	font-family: 'Font Awesome 5 Free';
-	font-weight: 900;
-	font-size: 0.8em;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	display: inline-block;
-	font-style: normal;
-	font-variant: normal;
-	text-rendering: auto;
-	line-height: 1;
 }
 
 .header .top-menu-nav .sub-menu,
@@ -431,6 +420,11 @@
 	.header .top-menu ul li {
 		margin-left: 0;
 		display: block;
+	}
+
+	.header .top-menu ul .topli {
+		margin-left: 0;
+		margin-top: 40px;
 	}
 
 
@@ -2847,7 +2841,8 @@
 	vertical-align: top;
 	margin-right: 25px;
 	margin-top: 10px;
-	font-size: 16px;
+	font-size: 14px;
+  text-transform: uppercase;
 	color: #eee;
 	font-weight: 400;
 	cursor: pointer;
@@ -2944,7 +2939,7 @@
 
 .box-items .box-item .image .desc .name {
 	display: block;
-	font-size: 24px;
+	font-size: 32px;
 	font-weight: 600;
 	color: #101010;
 	word-wrap: break-word;
