@@ -56,6 +56,22 @@ body {
 	opacity: 0.2;
 }
 
+.footer .copy .mailto {
+	text-decoration: none;
+}
+
+.footer .copy .mailto p:hover {
+	color: #44F2FF;
+	font-weight: 600;
+	-webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
+}
+
+.footer .copy .mailto p {
+	-webkit-transition: 0.1s ease-out;
+  transition: 0.1s ease-out;
+}
+
 canvas {
   display: block;
   background: #101010;
